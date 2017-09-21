@@ -134,7 +134,7 @@ for (studentId,studentDetail) in studentsForIos{
     var Option = studentDetail["Option"] as! Int
     var totalScore = Float((FirstNote + SecondNote + Option)) / 3
     
-    studentsForIos[studentId]!["PassScore"]! = totalScore
+    studentsForIos[studentId]!["PassScore"]! = String(format: "%.2f",totalScore)
     
     if (85 ... 100).contains(totalScore) {
         studentsForIos[studentId]!["PassScoreRate"]! = "PEKİYİ"

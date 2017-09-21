@@ -80,11 +80,11 @@ for (number,studentIndex) in zip(iosUsers,students) {
     }
 }
 
-// Dictiony 
+// Dictiony
 
 var airports : [String : String] = ["IST":"Istanbul Atatürk Hava Limanı",
-                "SAW":"Istanbul Sabiha Gökçen Havalimanı",
-                "ADB": "Izmir Adnan Menderes Airport"]
+                                    "SAW":"Istanbul Sabiha Gökçen Havalimanı",
+                                    "ADB": "Izmir Adnan Menderes Airport"]
 //Dictionary Ekleme
 airports["ADA"] = "Adana Airport"
 
@@ -92,17 +92,17 @@ airports["ADA"] = "Adana Airport"
 
 airports.updateValue("AYT", forKey: "Antalya Airport")
 for (code,name) in airports{
- print("\(code) --> \(name)")
+    print("\(code) --> \(name)")
 }
 
 
-
+// Öğrenci Dictionary<Int, Dictionary<String, Any>>
 var studentsForIos = [
     101:
         ["FirstName": "Berk Batuhan",
          "LastName": "ŞAKAR",
          "FirstNote": 47,
-         "SecondNote": 87,
+         "SecondNote": 82,
          "Option": 64,
          "PassScore": 0.0,
          "PassScoreRate": ""],
@@ -110,31 +110,32 @@ var studentsForIos = [
         ["FirstName": "Hakan",
          "LastName": "Yalçınkaya",
          "FirstNote": 70,
-         "SecondNote": 60,
-          "Option": 64,
-          "PassScore": 0.0,
-          "PassScoreRate": ""],
+         "SecondNote": 32,
+         "Option": 61,
+         "PassScore": 0.0,
+         "PassScoreRate": ""],
     103:
         ["FirstName": "Atahan",
          "LastName": "Demir",
          "FirstNote": 27,
          "SecondNote": 55,
-          "Option": 20,
-          "PassScore": 0.0,
-          "PassScoreRate": ""]
+         "Option": 10,
+         "PassScore": 0.0,
+         "PassScoreRate": ""]
 ]
+type(of: studentsForIos)
 
+var FirstNote: Int
 
 for (studentId,studentDetail) in studentsForIos{
-    var FirstNote = studentDetail["FirstNote"] as! Int
-    print(type(of: studentDetail["FirstNote"]))
     
-    var SecondNote = studentDetail["SecondNote"] as! Int
-    
-    var Option = studentDetail["Option"] as! Int
-    var totalScore = Float((FirstNote + SecondNote + Option)) / 3
-    
-    studentsForIos[studentId]!["PassScore"]! = String(format: "%.2f",totalScore)
+    let FirstNote = studentDetail["FirstNote"] as! Int
+    //print(type(of: studentDetail["FirstNote"]))
+    let SecondNote = studentDetail["SecondNote"] as! Int
+    let Option = studentDetail["Option"] as! Int
+    let totalScore = Float((FirstNote + SecondNote + Option)) / 3
+    let twoDigits = String(format: "%.2f",totalScore)
+    studentsForIos[studentId]!["PassScore"]! = twoDigits
     
     if (85 ... 100).contains(totalScore) {
         studentsForIos[studentId]!["PassScoreRate"]! = "PEKİYİ"
@@ -152,5 +153,5 @@ for (studentId,studentDetail) in studentsForIos{
 
 print("----------------")
 for (studentId,studentDetail) in studentsForIos{
-print(studentDetail)
+    print("\(studentDetail["FirstName"]!) --> \(studentDetail["PassScore"]!)")
 }

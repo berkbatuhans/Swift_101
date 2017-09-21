@@ -62,6 +62,8 @@ for (number,studentIndex) in students.enumerated() {
     }
     x + 1
 }
+
+
 print("----------------------------------------------")
 for (number,studentIndex) in zip(iosUsers,students) {
     let number = "\(number)'ın başarı Durumu:"
@@ -117,7 +119,7 @@ var studentsForIos = [
          "LastName": "Demir",
          "FirstNote": 27,
          "SecondNote": 55,
-          "Option": 64,
+          "Option": 20,
           "PassScore": 0.0,
           "PassScoreRate": ""]
 ]
@@ -125,6 +127,7 @@ var studentsForIos = [
 
 for (studentId,studentDetail) in studentsForIos{
     var FirstNote = studentDetail["FirstNote"] as! Int
+    print(type(of: studentDetail["FirstNote"]))
     
     var SecondNote = studentDetail["SecondNote"] as! Int
     
@@ -132,8 +135,18 @@ for (studentId,studentDetail) in studentsForIos{
     var totalScore = Float((FirstNote + SecondNote + Option)) / 3
     
     studentsForIos[studentId]!["PassScore"]! = totalScore
-
-    //print(studentDetail)
+    
+    if (85 ... 100).contains(totalScore) {
+        studentsForIos[studentId]!["PassScoreRate"]! = "PEKİYİ"
+    }else if (70 ... 84).contains(totalScore){
+        studentsForIos[studentId]!["PassScoreRate"]! = "İYİ"
+    }else if (55 ... 69).contains(totalScore){
+        studentsForIos[studentId]!["PassScoreRate"]! = "ORTA"
+    }else if (45 ... 54).contains(totalScore){
+        studentsForIos[studentId]!["PassScoreRate"]! = "GECER"
+    }else{
+        studentsForIos[studentId]!["PassScoreRate"]! = "KALDI"
+    }
 }
 
 

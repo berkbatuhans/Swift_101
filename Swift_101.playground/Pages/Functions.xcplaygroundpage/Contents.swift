@@ -43,16 +43,21 @@ func metrekareHesapla(en: UInt, boy: UInt) -> UInt {
     return (en * boy)
 }
 
-//Example  : hizmetBedeli(_en: 52, _boy: 100)
-//Example 2: hizmetBedeli(_renk: "blue",_en: 10, _boy: 50)
-func hizmetBedeli(_renk: String = "others", _en: UInt, _boy: UInt) -> UInt{
-    if (boyaFiyat[_renk] != nil){
-        let deger = Double(metrekareHesapla(en: _en, boy: _boy)) * boyaFiyat[_renk]!
-        return UInt(deger)
+//Example  : hizmetBedeli(en: 52, boy: 5)
+//Example 2: hizmetBedeli(renk: "blue",en: 52, boy: 5)
+func hizmetBedeli(renk: String = "others", en: UInt, boy: UInt) -> UInt{
+    
+    if let isColorOptional = boyaFiyat[renk]{
+        return UInt(Double(metrekareHesapla(en: en, boy: boy)) * isColorOptional)
     }
-    return 0
+    else{
+        return UInt(Double(metrekareHesapla(en: en, boy: boy)) * boyaFiyat["others"]!)
+    }
+    
 }
 
-hizmetBedeli(_en: 52, _boy: 100)
-hizmetBedeli(_renk: "bxlue",_en: 10, _boy: 50)
+print(hizmetBedeli(en: 100, boy: 5))
+print(hizmetBedeli(renk: "blue",en: 52, boy: 5))
+print(hizmetBedeli(renk: "yellow",en: 100, boy: 5))
+print(hizmetBedeli(renk: "xx", en: 100, boy: 5))
 

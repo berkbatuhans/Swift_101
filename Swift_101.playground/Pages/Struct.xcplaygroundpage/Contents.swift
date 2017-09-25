@@ -12,30 +12,12 @@ struct Student {
     }
     
 }
-
-var studentsForIos : [Student] = []
-studentsForIos.append(Student(studentId: 101, firstName: "Berk Batuhan", lastName: "ŞAKAR"))
-studentsForIos.append(Student(studentId: 102, firstName: "Hakan", lastName: "Yalçınkaya"))
-studentsForIos.append(Student(studentId: 103, firstName: "Atahan", lastName: "Demir"))
-
-
 struct Lesson {
     var lessonId: UInt
     var lessonName: String
 }
-
-
-var lesson : [Lesson] = []
-lesson.append(Lesson(lessonId: 1001, lessonName: "Fizik"))
-lesson.append(Lesson(lessonId: 1002, lessonName: "Kimya"))
-lesson.append(Lesson(lessonId: 1003, lessonName: "Biyoloji"))
-lesson.append(Lesson(lessonId: 1004, lessonName: "Matematik"))
-//for i in lesson{
-//   print (i.lessonName)
-//}
-
 struct Notlar {
-
+    
     var studentId : UInt
     var lesson: UInt
     var firstNote: Int
@@ -61,7 +43,7 @@ struct Notlar {
         self.passScore = Float(firstNote + secondNote) / 2
         self.passScoreRate = "Sözlü Notunuz Bekleniyor..."
     }
-
+    
     init(_ firstNote: Int, _ secondNote: Int, _ opinion: Int, _ student: UInt, _ lesson: UInt) {
         
         let passScoreValue = Float((firstNote + secondNote + opinion) / 3)
@@ -80,7 +62,7 @@ struct Notlar {
                 return "KALDI"
             }
         }
-
+        
         self.init(firstNote, secondNote, student, lesson)
         //self.init(firstNote)
         //self.firstNote = firstNote
@@ -88,25 +70,47 @@ struct Notlar {
         self.opinion = opinion
         self.passScore = passScoreValue
         self.passScoreRate = isPass(totalScore: passScoreValue)
-
+        
     }
-
-
-
+    
+    
+    
     /*
      // 3 Not bölümünü hesaplar.
      func passScoreFunc() -> Float{
-        let deger = Float((self.firstNote + self.secondNote + self.opinion) / 3)
-        return deger
-    }
+     let deger = Float((self.firstNote + self.secondNote + self.opinion) / 3)
+     return deger
+     }
+     
+     mutating func updatePasscore(){
+     self.passScore = passScoreFunc()
+     }
+     */
     
-    mutating func updatePasscore(){
-        self.passScore = passScoreFunc()
-    }
-    */
-
-
+    
 }
+
+
+
+
+
+var lesson : [Lesson] = []
+var studentsForIos : [Student] = []
+var passscoreList : [Notlar] = []
+
+lesson.append(Lesson(lessonId: 1001, lessonName: "Fizik"))
+lesson.append(Lesson(lessonId: 1002, lessonName: "Kimya"))
+lesson.append(Lesson(lessonId: 1003, lessonName: "Biyoloji"))
+lesson.append(Lesson(lessonId: 1004, lessonName: "Matematik"))
+//for i in lesson{
+//   print (i.lessonName)
+//}
+
+studentsForIos.append(Student(studentId: 101, firstName: "Berk Batuhan", lastName: "ŞAKAR"))
+studentsForIos.append(Student(studentId: 102, firstName: "Hakan", lastName: "Yalçınkaya"))
+studentsForIos.append(Student(studentId: 103, firstName: "Atahan", lastName: "Demir"))
+
+
 
 
 //print(Notlar(10,101))
@@ -118,7 +122,6 @@ struct Notlar {
 
 
 
-var passscoreList : [Notlar] = []
 
 //passscoreList.append(Notlar(47))
 //passscoreList.append(Notlar(70,32))
@@ -129,6 +132,9 @@ var passscoreList : [Notlar] = []
 //}
 
 passscoreList.append(Notlar(27, 55, 10, 101, 1001))
+
+
+
 
 
 

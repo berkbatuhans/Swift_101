@@ -3,5 +3,7 @@
     <pages>
         <page name='Functions'/>
         <page name='Dictionary'/>
+        <page name='StudentFunctions'/>
+        <page name='Struct'/>
     </pages>
 </playground>

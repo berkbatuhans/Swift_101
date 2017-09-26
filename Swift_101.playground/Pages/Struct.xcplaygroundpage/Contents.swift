@@ -18,25 +18,25 @@ struct Lesson {
 }
 struct Notlar {
     
-    var studentId : UInt
-    var lesson: UInt
-    var firstNote: Int
-    var secondNote: Int
-    var opinion: Int
+    //var studentId : UInt
+    //var lesson: UInt
+    var firstNote: Float
+    var secondNote: Float
+    var opinion: Float
     var passScore: Float
     var passScoreRate: String!
-    init(_ firstNote: Int,_ student:UInt,_ lesson: UInt) {
-        self.studentId = student
-        self.lesson = lesson
+    init(_ firstNote: Float) {
+        //self.studentId = st udent
+        //self.lesson = lesson
         self.firstNote = firstNote
         self.secondNote = 0
         self.opinion = 0
         self.passScore = Float(firstNote)
         self.passScoreRate = "2.Notunuz ve Sözlü Notunuz Bekleniyor..."
     }
-    init(_ firstNote: Int, _ secondNote: Int, _ student: UInt,_ lesson: UInt) {
+    init(_ firstNote: Float, _ secondNote: Float) {
         
-        self.init(firstNote, student, lesson )
+        self.init(firstNote)
         //self.firstNote = firstNote
         self.secondNote = secondNote
         self.opinion = 0
@@ -44,7 +44,7 @@ struct Notlar {
         self.passScoreRate = "Sözlü Notunuz Bekleniyor..."
     }
     
-    init(_ firstNote: Int, _ secondNote: Int, _ opinion: Int, _ student: UInt, _ lesson: UInt) {
+    init(_ firstNote: Float, _ secondNote: Float, _ opinion: Float) {
         
         let passScoreValue = Float((firstNote + secondNote + opinion) / 3)
         
@@ -63,7 +63,7 @@ struct Notlar {
             }
         }
         
-        self.init(firstNote, secondNote, student, lesson)
+        self.init(firstNote, secondNote)
         //self.init(firstNote)
         //self.firstNote = firstNote
         //self.secondNote = secondNote
@@ -75,13 +75,13 @@ struct Notlar {
     
     
     
-    /*
+    
      // 3 Not bölümünü hesaplar.
      func passScoreFunc() -> Float{
      let deger = Float((self.firstNote + self.secondNote + self.opinion) / 3)
      return deger
      }
-     
+     /*
      mutating func updatePasscore(){
      self.passScore = passScoreFunc()
      }
@@ -131,15 +131,19 @@ studentsForIos.append(Student(studentId: 103, firstName: "Atahan", lastName: "De
 //    print(i.firstNote)
 //}
 
-passscoreList.append(Notlar(27, 55, 10, 101, 1001))
+//passscoreList.append(Notlar(27, 55, 10, 101, 1001))
+
+
+print(Notlar(10))
+print(Notlar(10, 50))
+print(Notlar(10, 50,83))
 
 
 
 
+var not = Notlar(10,15,52)
 
-
-
-
+print(not.passScoreFunc())
 
 
 
